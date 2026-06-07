@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience – Muhammad Sarfraz Gul</title>
+<style>
+    :root {
+        --bg: #050816;
+        --card-bg: rgba(15,23,42,0.95);
+        --border-glass: rgba(148,163,184,0.4);
+        --text-main: #e5e7eb;
+        --accent: #4f8cff;
+    }
+    body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1f2937 0, var(--bg) 45%);
+        color: var(--text-main);
+        min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        background: linear-gradient(to right, rgba(15,23,42,0.9), rgba(15,23,42,0.4));
+        border-bottom: 1px solid rgba(148,163,184,0.3);
+        padding: 10px 6vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-left { display:flex; align-items:center; gap:10px; font-weight:600; }
+    .nav-dot { width:10px; height:10px; border-radius:999px; background:radial-gradient(circle,#4f8cff,#1d4ed8); box-shadow:0 0 12px rgba(79,140,255,0.9); }
+    .nav-links { display:flex; gap:18px; font-size:0.9rem; }
+    .nav-links a { padding:6px 10px; border-radius:999px; }
+    .nav-links a:hover { background:rgba(148,163,184,0.2); }
+    .nav-links a.active { background:rgba(79,140,255,0.2); color:#bfdbfe; }
+
+    main {
+        max-width: 1000px;
+        margin: 40px auto 60px;
+        padding: 0 6vw;
+    }
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+    .subtitle {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin-bottom: 26px;
+    }
+
+    .timeline {
+        position: relative;
+        padding-left: 26px;
+        border-left: 1px solid rgba(148,163,184,0.4);
+    }
+    .entry {
+        position: relative;
+        margin-bottom: 26px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .entry.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .dot {
+        position: absolute;
+        left: -9px;
+        top: 4px;
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        background: radial-gradient(circle, #4f8cff, #1d4ed8);
+        box-shadow: 0 0 14px rgba(79,140,255,0.9);
+    }
+    .card {
+        background: var(--card-bg);
+        border-radius: 18px;
+        border: 1px solid var(--border-glass);
+        padding: 14px 16px 14px;
+        box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+    }
+    .role {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+    .meta {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-bottom: 8px;
+    }
+    ul {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: #d1d5db;
+    }
+
+    footer {
+        border-top: 1px solid rgba(31,41,55,0.9);
+        padding: 18px 6vw 24px;
+        font-size: 0.8rem;
+        color: #9ca3af;
+        background: radial-gradient(circle at bottom, rgba(15,23,42,0.9), #020617 55%);
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<header class="navbar">
+    <div class="nav-left">
+        <div class="nav-dot"></div>
+        <div>Muhammad Sarfraz Gul</div>
+    </div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="experience.html" class="active">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Experience Timeline</h1>
+    <p class="subtitle">Large-scale infrastructure and giga projects in Saudi Arabia and Pakistan.</p>
+
+    <div class="timeline">
+        <div class="entry">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="role">Sr. Document Controller – V3 Middle East Engineering Consultant</div>
+                <div class="meta">Nov 2024 – Present · Riyadh, Saudi Arabia · Client: Diriyah Company · PMC: EllisDon · Project: Royal Diriyah Golf Club</div>
+                <ul>
+                    <li>Develop, implement, and maintain document control procedures and new project setup.</li>
+                    <li>Generate transmittals, cover letters, initiate sub-workflows, and issue documents to clients, contractors, and other parties.</li>
+                    <li>Implement and manage EDMS Aconex and establish document management strategies to optimize workflows and ensure compliance.</li>
+                    <li>Create workflow templates and coordinate with contractors’ document control teams.</li>
+                    <li>Oversee quality control measures to ensure accuracy, completeness, and integrity of documents.</li>
+                    <li>Manage document lifecycles, including creation, review, approval, distribution, and archiving.</li>
+                    <li>Maintain and update document registers, logs, and databases; generate regular status reports.</li>
+                    <li>Collaborate with project managers and engineers to ensure documentation is complete and up to date.</li>
+                    <li>Ensure proper version control, maintain revision histories, and support project close-out.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="role">Document Controller – MASCO Group</div>
+                <div class="meta">Oct 2023 – Oct 2024 · Riyadh, Saudi Arabia · Client: Qiddiya · Consultant: JACOBS · Delivery Partner: MACE</div>
+                <ul>
+                    <li>Managed all incoming and outgoing documents between contractor, consultant, and client, ensuring timely distribution.</li>
+                    <li>Initiated workflows for document review in Aconex and maintained revision history through event logs.</li>
+                    <li>Utilized Aconex for WIR, MIR, ITP, MST, RAMS, TRP, PQP, NCR, SOR, HSE training reports, letters, dashboards, and KPI reports.</li>
+                    <li>Ensured documents complied with project requirements and Aconex protocols, and maintained up-to-date document registers.</li>
+                    <li>Prepared technical logs and regularly shared updates with the team on document status.</li>
+                    <li>Coordinated between design consultants and contractor to facilitate document deliverables and package completeness.</li>
+                    <li>Ensured security and confidentiality of sensitive project information with appropriate access controls.</li>
+                    <li>Managed supplier pre-qualification invitations and documentation; coordinated between PMO team and client representatives.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="role">Documents Coordinator – Rafi Group</div>
+                <div class="meta">Oct 2021 – Aug 2023 · Lahore, Pakistan · Project: Green Acers Housing Society</div>
+                <ul>
+                    <li>Received, stored, and distributed documents to relevant stakeholders.</li>
+                    <li>Prepared logs of all documents and shared updates with the team on document status.</li>
+                    <li>Maintained and organized electronic and physical filing systems according to company standards.</li>
+                    <li>Supported distribution, retrieval, and tracking of documents to ensure timely delivery.</li>
+                    <li>Reviewed documents for completeness, accuracy, and compliance with formatting and naming conventions.</li>
+                    <li>Assisted in creating and updating document templates, forms, and procedures.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="dot"></div>
+            <div class="card">
+                <div class="role">Assistant Document Coordinator – Al Jalil Developers</div>
+                <div class="meta">Oct 2020 – Sep 2021 · Lahore, Pakistan · Project: Al Aziz Residencia</div>
+                <ul>
+                    <li>Managed and maintained controlled company document records using Excel.</li>
+                    <li>Distributed project-related copies to internal teams and handled physical filing of customer plots and contractor documents.</li>
+                    <li>Assisted senior document controller in implementing and maintaining document control processes.</li>
+                    <li>Supported controlling, distribution, and retrieval of documents in both physical and electronic formats.</li>
+                    <li>Conducted regular reviews of documentation to ensure accuracy and completeness.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>© <span id="year"></span> Muhammad Sarfraz Gul · Experience</footer>
+
+<script>
+    const entries = document.querySelectorAll('.entry');
+    const obs = new IntersectionObserver(es => {
+        es.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    entries.forEach(e => obs.observe(e));
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

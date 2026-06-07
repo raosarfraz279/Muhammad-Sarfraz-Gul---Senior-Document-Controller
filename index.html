@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Sarfraz Gul – Senior Document Controller</title>
+<style>
+    :root {
+        --bg: #050816;
+        --card-bg: rgba(255, 255, 255, 0.08);
+        --border-glass: rgba(255, 255, 255, 0.25);
+        --text-main: #ffffff;
+        --accent: #4f8cff;
+        --accent-soft: rgba(79, 140, 255, 0.4);
+    }
+    body.dark {
+        --bg: #050816;
+        --card-bg: rgba(15, 23, 42, 0.9);
+        --text-main: #e5e7eb;
+    }
+    body.light {
+        --bg: #f3f4f6;
+        --card-bg: rgba(255, 255, 255, 0.9);
+        --text-main: #111827;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1f2937 0, var(--bg) 45%);
+        color: var(--text-main);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Navbar */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        background: linear-gradient(to right, rgba(15,23,42,0.9), rgba(15,23,42,0.4));
+        border-bottom: 1px solid rgba(148,163,184,0.3);
+        padding: 10px 6vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+    }
+    .nav-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: radial-gradient(circle, #4f8cff, #1d4ed8);
+        box-shadow: 0 0 12px rgba(79,140,255,0.9);
+    }
+    .nav-links {
+        display: flex;
+        gap: 18px;
+        font-size: 0.9rem;
+    }
+    .nav-links a {
+        padding: 6px 10px;
+        border-radius: 999px;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .nav-links a:hover {
+        background: rgba(148,163,184,0.2);
+        transform: translateY(-1px);
+    }
+    .nav-links a.active {
+        background: rgba(79,140,255,0.2);
+        color: #bfdbfe;
+    }
+
+    /* Dark mode toggle */
+    .toggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.4);
+        background: rgba(15,23,42,0.6);
+    }
+    .toggle-circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        background: radial-gradient(circle, #fde68a, #f97316);
+        box-shadow: 0 0 10px rgba(251,191,36,0.8);
+        transition: transform 0.2s;
+    }
+    body.light .toggle-circle {
+        transform: translateX(14px);
+        background: radial-gradient(circle, #38bdf8, #0ea5e9);
+    }
+
+    /* Layout */
+    .hero {
+        max-width: 1100px;
+        margin: 40px auto 60px;
+        padding: 0 6vw;
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+        gap: 40px;
+        align-items: center;
+    }
+    @media (max-width: 900px) {
+        .hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+    }
+
+    /* Glass card */
+    .glass {
+        background: var(--card-bg);
+        border-radius: 24px;
+        border: 1px solid var(--border-glass);
+        box-shadow:
+            0 18px 45px rgba(15,23,42,0.7),
+            0 0 0 1px rgba(148,163,184,0.2);
+        padding: 26px 26px 24px;
+        position: relative;
+        overflow: hidden;
+    }
+    .glass::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: radial-gradient(circle at 0 0, rgba(96,165,250,0.25), transparent 55%),
+                    radial-gradient(circle at 100% 100%, rgba(129,140,248,0.25), transparent 55%);
+        opacity: 0.9;
+        pointer-events: none;
+    }
+    .glass-inner {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Hero left */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(15,23,42,0.7);
+        border: 1px solid rgba(148,163,184,0.4);
+        font-size: 0.75rem;
+        margin-bottom: 14px;
+    }
+    .badge-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 10px rgba(34,197,94,0.9);
+    }
+    .hero-title {
+        font-size: clamp(1.9rem, 3vw + 1rem, 2.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+    .hero-sub {
+        font-size: 1rem;
+        color: #9ca3af;
+        margin-bottom: 18px;
+    }
+    .typing {
+        font-size: 1.05rem;
+        color: #bfdbfe;
+        font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid #bfdbfe;
+        width: 0;
+        animation: typing 4s steps(40, end) forwards, blink 0.8s step-end infinite;
+    }
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+    .hero-text {
+        margin-top: 18px;
+        font-size: 0.95rem;
+        color: #d1d5db;
+        line-height: 1.7;
+    }
+    .hero-text span {
+        color: #e5e7eb;
+        font-weight: 500;
+    }
+
+    .hero-actions {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .btn-primary, .btn-ghost {
+        border-radius: 999px;
+        padding: 9px 18px;
+        font-size: 0.9rem;
+        border: 1px solid transparent;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #4f46e5, #2563eb);
+        color: white;
+        box-shadow: 0 12px 30px rgba(37,99,235,0.6);
+    }
+    .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 40px rgba(37,99,235,0.8);
+    }
+    .btn-ghost {
+        background: rgba(15,23,42,0.7);
+        border-color: rgba(148,163,184,0.5);
+        color: #e5e7eb;
+    }
+    .btn-ghost:hover {
+        background: rgba(31,41,55,0.9);
+        transform: translateY(-1px);
+    }
+
+    /* Hero right */
+    .hero-right {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    .profile-orbit {
+        position: relative;
+        width: 260px;
+        height: 260px;
+    }
+    .profile-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 999px;
+        border: 1px dashed rgba(148,163,184,0.5);
+        box-shadow: 0 0 40px rgba(15,23,42,0.9);
+    }
+    .profile-img-wrap {
+        position: absolute;
+        inset: 18px;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 2px solid rgba(148,163,184,0.6);
+        box-shadow:
+            0 18px 40px rgba(15,23,42,0.9),
+            0 0 0 1px rgba(148,163,184,0.4);
+    }
+    .profile-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.02);
+    }
+    .orbit-pill {
+        position: absolute;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        background: rgba(15,23,42,0.9);
+        border: 1px solid rgba(148,163,184,0.5);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #e5e7eb;
+        backdrop-filter: blur(10px);
+    }
+    .orbit-pill span {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: #4ade80;
+        box-shadow: 0 0 10px rgba(74,222,128,0.9);
+    }
+    .pill-top { top: -10px; left: 10px; }
+    .pill-right { top: 40%; right: -10px; }
+    .pill-bottom { bottom: -10px; left: 30%; }
+
+    /* Sections preview */
+    .sections-row {
+        max-width: 1100px;
+        margin: 0 auto 60px;
+        padding: 0 6vw;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 20px;
+    }
+    .section-card {
+        position: relative;
+        padding: 18px 18px 16px;
+        border-radius: 20px;
+        background: radial-gradient(circle at top left, rgba(79,140,255,0.25), transparent 55%),
+                    radial-gradient(circle at bottom right, rgba(129,140,248,0.25), transparent 55%),
+                    rgba(15,23,42,0.9);
+        border: 1px solid rgba(148,163,184,0.4);
+        box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+        overflow: hidden;
+        transform: translateY(10px);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .section-card.visible {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .section-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9ca3af;
+        margin-bottom: 6px;
+    }
+    .section-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+    .section-text {
+        font-size: 0.85rem;
+        color: #d1d5db;
+        margin-bottom: 10px;
+    }
+    .section-link {
+        font-size: 0.8rem;
+        color: #bfdbfe;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Footer */
+    footer {
+        border-top: 1px solid rgba(31,41,55,0.9);
+        padding: 18px 6vw 24px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 0.8rem;
+        color: #9ca3af;
+        background: radial-gradient(circle at bottom, rgba(15,23,42,0.9), #020617 55%);
+    }
+    .socials {
+        display: flex;
+        gap: 10px;
+    }
+    .social-pill {
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.4);
+        background: rgba(15,23,42,0.8);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-size: 0.8rem;
+    }
+</style>
+</head>
+<body class="dark">
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="nav-left">
+        <div class="nav-dot"></div>
+        <div>Muhammad Sarfraz Gul</div>
+    </div>
+    <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="toggle" id="themeToggle">
+        <div style="font-size:0.75rem;">Dark</div>
+        <div class="toggle-circle"></div>
+        <div style="font-size:0.75rem;">Light</div>
+    </div>
+</header>
+
+<!-- HERO -->
+<main>
+<section class="hero">
+    <div class="glass">
+        <div class="glass-inner">
+            <div class="badge">
+                <div class="badge-dot"></div>
+                <span>Senior Document Controller · Saudi Arabia</span>
+            </div>
+            <h1 class="hero-title">Senior Document Controller for Giga & Infrastructure Projects</h1>
+            <p class="hero-sub">Riyadh, Saudi Arabia · Pakistani · B.Sc. Economics</p>
+            <div class="typing">Expert in Oracle Aconex, EDMS & Workflow Management...</div>
+            <p class="hero-text">
+                Senior Document Controller with <span>5+ years of experience</span> in large-scale infrastructure and giga projects in Saudi Arabia.
+                Expert in <span>Oracle Aconex</span> and EDMS implementation, document lifecycle management, workflow administration, transmittals,
+                logs, and compliance with project protocols. Proven ability to manage high-volume technical and non-technical documentation
+                across multiple stakeholders including clients, consultants, and contractors.
+            </p>
+            <div class="hero-actions">
+                <a href="cv.pdf" class="btn-primary" download>
+                    <span>Download CV (PDF)</span>
+                </a>
+                <a href="experience.html" class="btn-ghost">
+                    <span>View Experience Timeline</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <div class="profile-orbit">
+            <div class="profile-ring"></div>
+            <div class="profile-img-wrap">
+                <img src="profile.jpg" alt="Profile photo of Muhammad Sarfraz Gul">
+            </div>
+            <div class="orbit-pill pill-top"><span></span> Oracle Aconex Expert</div>
+            <div class="orbit-pill pill-right"><span></span> EDMS Implementation</div>
+            <div class="orbit-pill pill-bottom"><span></span> Giga Projects · KSA</div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION PREVIEW CARDS -->
+<section class="sections-row">
+    <article class="section-card scroll-card">
+        <div class="section-label">Experience</div>
+        <div class="section-title">Giga & Infrastructure Projects</div>
+        <p class="section-text">
+            V3 Middle East, MASCO Group, Rafi Group, and Al Jalil Developers with clients like Diriyah Company and Qiddiya.
+        </p>
+        <a href="experience.html" class="section-link">Open Experience Timeline →</a>
+    </article>
+
+    <article class="section-card scroll-card">
+        <div class="section-label">Skills</div>
+        <div class="section-title">Document Control & EDMS</div>
+        <p class="section-text">
+            Oracle Aconex, Oracle Unifier, EDMS implementation, workflows, transmittals, MDR, version control, and compliance.
+        </p>
+        <a href="skills.html" class="section-link">View Skills & Levels →</a>
+    </article>
+
+    <article class="section-card scroll-card">
+        <div class="section-label">Certifications</div>
+        <div class="section-title">Udemy & Client Approvals</div>
+        <p class="section-text">
+            Multiple Udemy certifications in document management and workflow, plus formal approvals from Qiddiya and Diriyah.
+        </p>
+        <a href="certifications.html" class="section-link">See Certifications →</a>
+    </article>
+
+    <article class="section-card scroll-card">
+        <div class="section-label">Contact</div>
+        <div class="section-title">Let’s Connect</div>
+        <p class="section-text">
+            Available for senior document control roles on major programs in Saudi Arabia and the wider region.
+        </p>
+        <a href="contact.html" class="section-link">Open Contact Form →</a>
+    </article>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div>© <span id="year"></span> Muhammad Sarfraz Gul · Senior Document Controller</div>
+    <div class="socials">
+        <a class="social-pill" href="mailto:dc.sarfrazgul@gmail.com">
+            <span>✉</span><span>Email</span>
+        </a>
+        <a class="social-pill" href="https://wa.me/966503743244" target="_blank">
+            <span>💬</span><span>WhatsApp</span>
+        </a>
+        <a class="social-pill" href="https://www.linkedin.com" target="_blank">
+            <span>in</span><span>LinkedIn</span>
+        </a>
+        <a class="social-pill" href="https://github.com" target="_blank">
+            <span>🐙</span><span>GitHub</span>
+        </a>
+    </div>
+</footer>
+
+<script>
+    // Dark / light toggle
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    function setTheme(mode) {
+        body.classList.remove('dark', 'light');
+        body.classList.add(mode);
+        localStorage.setItem('theme', mode);
+    }
+    const saved = localStorage.getItem('theme') || 'dark';
+    setTheme(saved);
+    toggle.addEventListener('click', () => {
+        const next = body.classList.contains('dark') ? 'light' : 'dark';
+        setTheme(next);
+    });
+
+    // Scroll animations
+    const cards = document.querySelectorAll('.scroll-card');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

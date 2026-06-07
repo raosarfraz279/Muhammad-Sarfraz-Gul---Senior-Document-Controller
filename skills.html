@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills – Muhammad Sarfraz Gul</title>
+<style>
+    :root {
+        --bg: #050816;
+        --card-bg: rgba(15,23,42,0.95);
+        --border-glass: rgba(148,163,184,0.4);
+        --text-main: #e5e7eb;
+        --accent: #4f8cff;
+    }
+    body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #1f2937 0, var(--bg) 45%);
+        color: var(--text-main);
+        min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        background: linear-gradient(to right, rgba(15,23,42,0.9), rgba(15,23,42,0.4));
+        border-bottom: 1px solid rgba(148,163,184,0.3);
+        padding: 10px 6vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-left { display:flex; align-items:center; gap:10px; font-weight:600; }
+    .nav-dot { width:10px; height:10px; border-radius:999px; background:radial-gradient(circle,#4f8cff,#1d4ed8); box-shadow:0 0 12px rgba(79,140,255,0.9); }
+    .nav-links { display:flex; gap:18px; font-size:0.9rem; }
+    .nav-links a { padding:6px 10px; border-radius:999px; }
+    .nav-links a:hover { background:rgba(148,163,184,0.2); }
+    .nav-links a.active { background:rgba(79,140,255,0.2); color:#bfdbfe; }
+
+    main {
+        max-width: 900px;
+        margin: 40px auto 60px;
+        padding: 0 6vw;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 6px; }
+    .subtitle { font-size: 0.9rem; color:#9ca3af; margin-bottom: 24px; }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        border: 1px solid var(--border-glass);
+        padding: 18px 18px 16px;
+        box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+    }
+    .skill-group-title {
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9ca3af;
+        margin-bottom: 10px;
+    }
+    .skill {
+        margin-bottom: 14px;
+    }
+    .skill-header {
+        display:flex;
+        justify-content:space-between;
+        font-size:0.85rem;
+        margin-bottom:4px;
+    }
+    .bar {
+        position: relative;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(31,41,55,0.9);
+        overflow: hidden;
+    }
+    .bar-fill {
+        position:absolute;
+        inset:0;
+        width:0;
+        border-radius:999px;
+        background: linear-gradient(90deg,#4f46e5,#2563eb,#22c55e);
+        box-shadow: 0 0 18px rgba(37,99,235,0.8);
+        transition: width 1s ease-out;
+    }
+
+    ul {
+        margin-top: 14px;
+        padding-left: 18px;
+        font-size: 0.85rem;
+        color: #d1d5db;
+        line-height: 1.6;
+    }
+
+    footer {
+        border-top: 1px solid rgba(31,41,55,0.9);
+        padding: 18px 6vw 24px;
+        font-size: 0.8rem;
+        color: #9ca3af;
+        background: radial-gradient(circle at bottom, rgba(15,23,42,0.9), #020617 55%);
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<header class="navbar">
+    <div class="nav-left">
+        <div class="nav-dot"></div>
+        <div>Muhammad Sarfraz Gul</div>
+    </div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html" class="active">Skills</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Skills & Expertise</h1>
+    <p class="subtitle">Focused on document control, EDMS implementation, workflows, and compliance for major projects.</p>
+
+    <div class="card">
+        <div class="skill-group-title">Core Technical Skills</div>
+
+        <div class="skill" data-level="95">
+            <div class="skill-header">
+                <span>Oracle Aconex</span><span>Expert</span>
+            </div>
+            <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <div class="skill" data-level="88">
+            <div class="skill-header">
+                <span>Oracle Unifier</span><span>Advanced</span>
+            </div>
+            <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <div class="skill" data-level="92">
+            <div class="skill-header">
+                <span>EDMS Implementation & Management</span><span>Advanced</span>
+            </div>
+            <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <div class="skill" data-level="90">
+            <div class="skill-header">
+                <span>Workflow & Transmittal Management</span><span>Advanced</span>
+            </div>
+            <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <div class="skill" data-level="90">
+            <div class="skill-header">
+                <span>Version Control & Revision Tracking</span><span>Advanced</span>
+            </div>
+            <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <div class="skill" data-level="85">
+            <div class="skill-header">
+                <span>MDR Preparation & Compliance</span><span>Advanced</span>
+            </div>
+            <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <div class="skill" data-level="88">
+            <div class="skill-header">
+                <span>Microsoft Office (Excel, Word, PowerPoint)</span><span>Advanced</span>
+            </div>
+            <div class="bar"><div class="bar-fill"></div></div>
+        </div>
+
+        <ul>
+            <li>Knowledge of project management best practices and compliance protocols.</li>
+            <li>Strong attention to detail and accuracy in document handling.</li>
+            <li>Ability to maintain confidentiality and handle sensitive information professionally.</li>
+        </ul>
+    </div>
+</main>
+
+<footer>© <span id="year"></span> Muhammad Sarfraz Gul · Skills</footer>
+
+<script>
+    const skills = document.querySelectorAll('.skill');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const level = e.target.getAttribute('data-level');
+                const fill = e.target.querySelector('.bar-fill');
+                fill.style.width = level + '%';
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    skills.forEach(s => observer.observe(s));
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
